@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h2>Einstellungen</h2>
+  <form>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="moveCompletedTodos" [checked]="localStorageService.doMoveCompletedTodos()" #moveCompleteTodos>
+      <label class="form-check-label" for="moveCompletedTodos">Fertige Todos nach unten verschieben</label>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="showDeleteButtons" [checked]="localStorageService.doShowDeleteButtons()" #showDeleteButtons>
+      <label class="form-check-label" for="showDeleteButtons">Löschen-Button anzeigen</label>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="saveSettings(moveCompleteTodos.checked, showDeleteButtons.checked)" >Speichern</button>
+  </form>
+  <h3>Dev-Funktionen</h3>
+  <ul>
+    <li><a href="/settings" (click)="localStorageService.clearLocalStorage()">Clear LocalStorage</a></li>
+    <li><a href="/settings" (click)="localStorageService.addSampleData()">Testdaten anlegen</a></li>
+  </ul>
+</div>

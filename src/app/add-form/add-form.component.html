@@ -1,0 +1,68 @@
+<div class="col-4 col-xs-12">
+  <form>
+
+    <div class="d-flex gap-2 mb-3">
+      <div class="btn-group">
+        <button (click)="setPrio(-1)" type="button" class="btn btn-danger">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </button>
+        <button (click)="setPrio(0)" type="button" class="btn btn-outline-secondary">
+          <svg #svgHigh xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+            <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+          </svg>
+          <span class="visually-hidden">Button</span>
+        </button>
+        <button (click)="setPrio(1)" type="button" class="btn btn-outline-secondary">
+          <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stop-fill" viewBox="0 0 16 16">
+            <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5"/>
+          </svg>
+          <span class="visually-hidden">Button</span>
+        </button>
+        <button (click)="setPrio(2)" type="button" class="btn btn-outline-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+          </svg>
+          <span class="visually-hidden">Button</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Textfeld -->
+    <div class="mb-3">
+      <label for="textfield" class="form-label">Bezeichnung</label>
+      <input type="text" class="form-control" id="textfield" #description>
+    </div>
+
+    <!-- DateTimePicker -->
+    <div class="mb-3">
+      <label for="datetimepicker" data-date-format="dd.mm.yyyy" class="form-label">Fällig bis</label>
+      <input type="date" class="form-control" id="datetimepicker" #dueDate>
+    </div>
+
+    <!-- Combobox -->
+    <div class="mb-3">
+      <label for="combobox" class="form-label">Kategorie</label>
+      <select (change)="useCustCat(category.selectedIndex)"  class="form-select" id="combobox" #category>
+        <option value="CustCat">Eigene Kategorie</option>
+        <option selected value="Finanzen">Finanzen</option>
+        <option value="Schule">Schule</option>
+        <option value="Verein">Verein</option>
+        <option value="Familie">Familie</option>
+        <option value="Hausarbeit">Hausarbeit</option>
+      </select>
+    </div>
+
+    <!-- Custom Category -->
+      <div *ngIf="showCustCat" class="mb-3">
+        <label for="custCat" class="form-label">Eigene Kategorie</label>
+        <input type="text" class="form-control" id="custCat" #custCat>
+      </div>
+
+    <!-- Blauer Button -->
+    <button *ngIf="!showCustCat" (click)="createTask(description.value, dueDate.value, category.value)" class="btn btn-primary">Senden</button>
+    <!--<button *ngIf="showCustCat" (click)="createTask(description.value, dueDate.value, custCat.value)" class="btn btn-primary">Senden</button> die custCat Variable will nicht  -->
+  </form>
+</div>

@@ -1,0 +1,12 @@
+.navbar {
+  background-color: #343a40; /* Anthrazit */
+}
+
+.navbar-brand, .nav-link {
+  color: gray !important; /* Graue Schrift */
+}
+
+.active-nav-link {
+  color: white !important; /* Setzt die Schriftfarbe auf Weiß */
+}
+
